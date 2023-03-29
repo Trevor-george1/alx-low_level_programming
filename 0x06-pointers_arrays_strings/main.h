@@ -20,4 +20,6 @@ char *_strncat(char *dest, char *src, int n);
 char *leet(char *);
 
 char *rot13(char *);
+
+void print_number(int n);
 #endif
