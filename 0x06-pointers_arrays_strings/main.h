@@ -18,4 +18,6 @@ char *string_toupper(char *);
 char *_strncat(char *dest, char *src, int n);
 
 char *leet(char *);
+
+char *rot13(char *);
 #endif
