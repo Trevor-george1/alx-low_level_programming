@@ -3,18 +3,10 @@
 #include <stdlib.h>
 #include <string.h>
 /**
- * infinite_add - adds two numbers
- * @n : first number
- * @m: second number
- * @r: store the result
- * @size_r: size of variable r
- * Return: r
+ * rev_string - reverse string
  *
- *
-*
- * rev_string - reverse array
- * @n: integer params
- * Return: 0
+ * @n : variable to be reversed
+ * Return: nothing
  */
 
 void rev_string(char *n)
@@ -35,6 +27,15 @@ void rev_string(char *n)
 	*(n + i) = temp;
 	}
 }
+/**
+ * infinite_add - adds two numbers
+ *
+ * @n: first number
+ * @m: Second
+ * @r: store the result
+ * @size_r: size of variable r
+ * Return: r
+ */
 
 char *infinite_add(char *n, char *m, char *r, int size_r)
 {
