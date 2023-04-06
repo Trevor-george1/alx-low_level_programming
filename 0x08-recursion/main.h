@@ -12,7 +12,7 @@ int _pow_recursion(int x, int y);
 
 int _sqrt_recursion(int n);
 
-int _helper(int n, int start, int end);
+int _helper(int n, int b);
 
 int is_prime_number(int n);
 

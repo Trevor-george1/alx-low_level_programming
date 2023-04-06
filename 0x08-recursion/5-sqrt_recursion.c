@@ -7,34 +7,20 @@
 
 int _sqrt_recursion(int n)
 {
-	if (n == 0 || n == 1)
-	return (n);
-	return (_helper(n, 1, n / 2));
+	return (_helper(1, n));
 
 }
 /**
  * _helper - function that seraches for square root
  * @n: number to be checked
- * @start: start of number
- * @end: end of number
+ * @b: base number to check
  * Return: -1 if start is moe than end else square root
  */
-int _helper(int n, int start, int end)
+int _helper(int n, int b)
 {
-	int m = (start + end) / 2;
-
-	if (m * m == n)
-	{
-	return (m);
-	}
-	if (start >= end)
-	{
+	if (n * n == b)
+	return (n);
+	if (n * n > b)
 	return (-1);
-	}
-	if (m * m > n)
-	{
-	return (_helper(n, start, m - 1));
-	}
-	else
-	return (_helper(n, m + 1, end));
+	return (_helper(n + 1, b));
 }
