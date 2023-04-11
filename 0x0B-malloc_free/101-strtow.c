@@ -10,19 +10,24 @@
 
 char **strtow(char *str)
 {
-	int num, i, k;
-	char *p, **words, *s, *word;
+	int num, i, k, index, end, length, s;
+	char **words, *word;
 
-	if (str == NULL || *str == '\0')
+	if (str == NULL || strlen(str) == 0)
 	{
 	return (NULL);
 	}
 	num = 0;
-	for (p = str; p != NULL; p++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
-	if (!isspace(*p) && (p == str || isspace(*(p - 1))))
+	if (str[i] == ' ')
 	{
+	continue;
+	}
 	num++;
+	while (str[i] != ' ' && str[i] != '\0')
+	{
+	i++;
 	}
 	}
 	words = malloc((num + 1) * sizeof(char *));
@@ -30,36 +35,34 @@ char **strtow(char *str)
 	{
 	return (NULL);
 	}
-	i = 0;
-	for (p = str; p != NULL; )
+	index = 0;
+	for (i = 0; str[i] != '\0'; i++)
 	{
-	if (!isspace(*p))
+	if (str[i] == ' ')
 	{
-	s = p;
-	while (p != NULL && !isspace(*p))
-	{
-	p++;
+	continue;
 	}
-	word = malloc((p - s + 1) * sizeof(char));
+	s = i;
+	while (str[i] != ' ' && str[i] != '\0')
+	{
+	i++;
+	}
+	end = i;
+	length = end - s;
+	word = malloc((length + 1) * sizeof(char));
 	if (word == NULL)
 	{
-	for (k = 0; k < i; k++)
+	for (k = 0; k < index; k++)
 	{
 	free(words[k]);
 	}
 	free(words);
 	return (NULL);
 	}
-	strncpy(word, s, p - s);
-	word[p - s] = '\0';
-	words[i] = word;
-	i++;
+	strncpy(word, &str[s], length);
+	word[length] = '\0';
+	words[index++] = word;
 	}
-	else
-	{
-	p++;
-	}
-	}
-	words[num] = NULL;
+	words[index] = NULL;
 	return (words);
 }
