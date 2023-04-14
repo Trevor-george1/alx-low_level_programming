@@ -14,7 +14,7 @@
  */
 
 void *malloc_checked(unsigned int b)
-{	
+{
 	void *p = malloc(b);
 
 	if (p == NULL)
@@ -22,5 +22,6 @@ void *malloc_checked(unsigned int b)
 	fprintf(stderr, "Error: Malloc failed: %s\n", strerror(errno));
 	exit(98);
 	}
+	free(p);
 	return (p);
 }
