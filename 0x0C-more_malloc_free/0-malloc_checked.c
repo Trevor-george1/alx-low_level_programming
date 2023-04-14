@@ -21,7 +21,7 @@ void *malloc_checked(unsigned int b)
 	{
 	fprintf(stderr, "Error: Malloc failed: %s\n", strerror(errno));
 	exit(98);
-	return (NULL);
 	}
 	return (p);
+	return (NULL);
 }
