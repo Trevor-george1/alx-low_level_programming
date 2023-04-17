@@ -8,7 +8,7 @@
  */
 
 void print_dog(struct dog *d)
-{	
+{
 	char *name;
 	char *owner;
 
