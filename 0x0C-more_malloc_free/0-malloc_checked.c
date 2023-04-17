@@ -15,13 +15,12 @@
 
 void *malloc_checked(unsigned int b)
 {
-	void *p = malloc(b);
 
+	void *p;
+	p = malloc(b);
 	if (p == NULL)
 	{
-	fprintf(stderr, "Error: Malloc failed: %s\n", strerror(errno));
 	exit(98);
 	}
 	return (p);
-	return (NULL);
 }
