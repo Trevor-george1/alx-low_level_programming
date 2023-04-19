@@ -10,7 +10,7 @@
 
 int main(int argc, char *argv[])
 {
-	int num_of_bytes = 0;
+	int num_of_bytes;
 	char *p;
 	int i;
 
