@@ -4,23 +4,6 @@
 #include <string.h>
 
 /**
- * f - prints a name
- *
- *
- * @n: char
- * Return: Nothing
- */
-void *f(char *n)
-{
-	int len, i;
-
-	len = strlen(n);
-	for (i = 0; i < len; i++)
-	putchar(n[i]);
-	return (0);
-}
-
-/**
  * print_name - prints a name
  * @f: pointer to function print_name
  * @name: name to be printed
