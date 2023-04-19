@@ -10,7 +10,7 @@
 void print_codes(int no_of_bytes)
 {
 	int i;
-	unsigned char *p = (unsigned char *) print_codes;
+	unsigned char *p = (unsigned char*)print_codes;
 
 	for (i = 0; i < no_of_bytes; i++)
 	{

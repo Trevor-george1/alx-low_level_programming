@@ -12,5 +12,6 @@
 
 void print_name(char *name, void(*f)(char *n))
 {
-	f(name);
+	 f(name);
+	 putchar('\0');
 }
