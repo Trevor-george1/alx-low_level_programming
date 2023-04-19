@@ -14,9 +14,13 @@ void print_codes(int no_of_bytes)
 
 	for (i = 0; i < no_of_bytes; i++)
 	{
-	printf("%02x", p[i]);
+	if (i == no_of_bytes - 1)
+	{
+	printf("%02x\n", p[i]);
+	break;
 	}
-	printf("\n");
+	printf("%02x ", p[i]);
+	}
 }
 
 /**
