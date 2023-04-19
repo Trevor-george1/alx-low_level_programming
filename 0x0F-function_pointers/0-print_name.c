@@ -6,15 +6,15 @@
 /**
  * f - prints a name
  *
- * @f: is a pointer to function print_name
  *
+ * @n: char
  * Return: Nothing
  */
 void *f(char *n)
 {
 	int len, i;
-	len = strlen(n);
 
+	len = strlen(n);
 	for (i = 0; i < len; i++)
 	putchar(n[i]);
 	return (0);
