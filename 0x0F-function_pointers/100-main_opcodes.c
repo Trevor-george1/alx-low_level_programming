@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
 	if (num_of_bytes < 0)
 	{
 	printf("Error");
+	return (1);
 	exit(2);
 	}
 	p = (char *)main;
