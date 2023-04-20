@@ -16,7 +16,6 @@ void print_all(const char * const format, ...)
 	float f;
 	char *s;
 	int j = 0;
-	int sep = 0;
 
 	va_start(list, format);
 	while (format == NULL)
@@ -30,7 +29,7 @@ void print_all(const char * const format, ...)
 	{
 	case 'c':
 	c = va_arg(list, int);
-	printf("%d", c);
+	printf("%c", c);
 	break;
 	case 'i':
 	i = va_arg(list, int);
@@ -49,14 +48,9 @@ void print_all(const char * const format, ...)
 	printf("%s", s);
 	break;
 	}
-	if (format[j + 1] != '\0' && sep)
-	{
+	if ((format[j] == 'c' || format[j] == 'i' || format[j] == 'f' || format[j] == 's')
+		&& format[(j + 1)] != '\0')
 	printf(", ");
-	}
-	if (format[j] == 'c' || format[j] == 'i' || format[j] == 'f' || format[j] == 's')
-	{
-	sep = 1;
-	}
 	j++;
 	}
 	va_end(list);
