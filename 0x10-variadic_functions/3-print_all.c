@@ -19,6 +19,11 @@ void print_all(const char * const format, ...)
 	int sep = 0;
 
 	va_start(list, format);
+	while (format == NULL)
+	{
+	printf("\n");
+	return;
+	}
 	while (format[j])
 	{
 	switch (format[j])
@@ -41,10 +46,7 @@ void print_all(const char * const format, ...)
 	{
 	printf("(nil)");
 	}
-	else
-	{
 	printf("%s", s);
-	}
 	break;
 	}
 	if (format[j + 1] != '\0' && sep)
