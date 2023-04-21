@@ -41,14 +41,18 @@ void print_all(const char * const format, ...)
 	break;
 	case 's':
 	s = va_arg(list, char *);
-	if (s == NULL)
+	if (s != NULL)
+	{
+	printf("%s", s);
+	}
+	else
 	{
 	printf("(nil)");
-	}
-	printf("%s", s);
 	break;
 	}
-	if ((format[j] == 'c' || format[j] == 'i' || format[j] == 'f' || format[j] == 's')
+	}
+	if ((format[j] == 'c' || format[j] == 'i' ||
+		format[j] == 'f' || format[j] == 's')
 		&& format[(j + 1)] != '\0')
 	printf(", ");
 	j++;
