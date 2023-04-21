@@ -11,9 +11,6 @@
 void print_all(const char * const format, ...)
 {
 	va_list list;
-	int i;
-	char c;
-	float f;
 	char *s;
 	int j = 0;
 
@@ -28,16 +25,13 @@ void print_all(const char * const format, ...)
 	switch (format[j])
 	{
 	case 'c':
-	c = va_arg(list, int);
-	printf("%c", c);
+	printf("%c", va_arg(list, char));
 	break;
 	case 'i':
-	i = va_arg(list, int);
-	printf("%d", i);
+	printf("%d", va_arg(list, int));
 	break;
 	case 'f':
-	f = va_arg(list, double);
-	printf("%f", f);
+	printf("%f", va_arg(list, double));
 	break;
 	case 's':
 	s = va_arg(list, char *);
