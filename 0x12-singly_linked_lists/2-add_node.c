@@ -21,9 +21,14 @@ list_t *add_node(list_t **head, const char *str)
 	return (NULL);
 	}
 	newnode->str = strdup(str);
+	newnode->len = strlen(str);
 	if (newnode->str == NULL)
 	{
 	return (NULL);
+	}
+	else
+	{
+	printf("%d", newnode->len);
 	}
 	newnode->next = *head;
 	*head = newnode;
