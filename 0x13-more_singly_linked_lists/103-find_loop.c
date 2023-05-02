@@ -9,9 +9,9 @@
 
 listint_t *find_listint_loop(listint_t *head)
 {
-	listint_t *temp = head, *currrent = head;
+	listint_t *temp = head, *current = head;
 
-	while (temp != NULL & current != NULL && current->next != NULL)
+	while (temp != NULL && current != NULL && current->next != NULL)
 	{
 		temp = temp->next;
 		current = current->next->next;
