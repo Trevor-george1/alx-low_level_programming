@@ -14,14 +14,12 @@
 
 int create_file(const char *filename, char *text_content)
 {
-	mode_t mode;
 	int f;
 	ssize_t b;
 
 	if (filename == NULL)
 		return (-1);
-	mode = S_IRUSR | S_IWUSR;
-	f = open(filename, O_WRONLY | O_CREAT | O_TRUNC, mode);
+	f = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0600);
 	if (f == -1)
 		return (-1);
 	if (text_content != NULL)
@@ -34,5 +32,5 @@ int create_file(const char *filename, char *text_content)
 	}
 	}
 	close(f);
-	return (-1);
+	return (1);
 }
