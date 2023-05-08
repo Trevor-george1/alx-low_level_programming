@@ -8,49 +8,24 @@
 
 /**
  * err_exit - returns error
- * @c: code
- * @text: text to dispaly
+ * @file_from: file from
+ * @file_to: file to
+ * @argv: text to dispaly
  * Return: nothing
  */
 
-void err_exit(int c, const char *text)
+void err_exit(int file_from, int file_to, char *argv[])
 {
-	dprintf(STDERR_FILENO, "Error: %s\n", text);
-	exit(c);
-}
-
-/**
- * cpy_file - copy file form src to dest
- * @src: source file
- * @dest: destintion
- * Return: nOthing
- */
-void cpy_file(const char *src, const char *dest)
-{
-	int fsrc, fdest, b, bw;
-	char buffer[BUFFER];
-
-	fsrc = open(src, O_RDONLY);
-	if (fsrc == -1)
+	if (file_from == -1)
 	{
-		err_exit(98, "Can't read from file");
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+	exit(98);
 	}
-	fdest = open(dest, O_WRONLY | O_CREAT |
-	O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-	if (fdest == -1)
-		err_exit(99, "Can't read from file");
-	while ((b = read(fsrc, buffer, BUFFER)) > 0)
+	if (file_to == -1)
 	{
-		bw = write(fdest, buffer, b);
-		if (bw != b)
-			err_exit(99, "Can't read from file");
+	dprintf(STDERR_FILENO, "Error: Can't write ti %s\n", argv[2]);
+	exit(99);
 	}
-	if (b == -1)
-		err_exit(98, "Can't read from file");
-	if (close(fsrc) == -1)
-		err_exit(100, "Cant close f");
-	if (close(fdest) == -1)
-		err_exit(100, "Can;t close f");
 }
 
 /**
@@ -62,13 +37,41 @@ void cpy_file(const char *src, const char *dest)
 
 int main(int argc, char *argv[])
 {
-	const char *fsrc;
-	const char *fdest;
+	int file_from, file_to, err_close;
+	ssize_t n, nwr;
+	char buff[1024];
 
 	if (argc != 3)
-		err_exit(97, "Usage: cp file_from file_to");
-	fsrc = argv[1];
-	fdest = argv[2];
-	cpy_file(fsrc, fdest);
+	{
+		dprimtf(STDERR_FILENO, "%s\n", "usage: cp file_from file_to");
+		exit(97);
+	}
+	file_from = open(argv[1], O_RDONLY);
+	file_to = open(argv[2], O_CREAT | O_TRUNC | O_APPEND | O_WRONLY, 0664);
+	err_file(file_from, file_to, argv);
+
+	n = 1024;
+	while (n == 1024)
+	{
+		n = read(file_from, buf, 1024);
+		if (n == -1)
+			err_exit(-1, 0, argv);
+		nwr = write(file_to, buf, n);
+		if (nwr == -1)
+			err_exit(0, -1, argv);
+	}
+
+	err_close = close(file_from);
+	if (err_close == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Cna't close fd %d\n", file_from);
+		exit(100);
+	}
+	err_close = close(file_to);
+	if (err_close == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Cna't close fd %d\n", file_from);
+		exit(100);
+	}
 	return (0);
 }
