@@ -43,20 +43,20 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		dprimtf(STDERR_FILENO, "%s\n", "usage: cp file_from file_to");
+		dprintf(STDERR_FILENO, "%s\n", "usage: cp file_from file_to");
 		exit(97);
 	}
 	file_from = open(argv[1], O_RDONLY);
 	file_to = open(argv[2], O_CREAT | O_TRUNC | O_APPEND | O_WRONLY, 0664);
-	err_file(file_from, file_to, argv);
+	err_exit(file_from, file_to, argv);
 
 	n = 1024;
 	while (n == 1024)
 	{
-		n = read(file_from, buf, 1024);
+		n = read(file_from, buff, 1024);
 		if (n == -1)
 			err_exit(-1, 0, argv);
-		nwr = write(file_to, buf, n);
+		nwr = write(file_to, buff, n);
 		if (nwr == -1)
 			err_exit(0, -1, argv);
 	}
