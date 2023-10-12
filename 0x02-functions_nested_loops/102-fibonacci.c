@@ -6,20 +6,24 @@
  */
 int main(void)
 {
-	int first, second, next;
+	int first, second, next, i;
 	int target = 50;
 
 	first = 1;
 	second = 2;
 	next = first + second;
 	printf("%d, %d, ", first, second);
-	while (next <= target)
-	{	
-		printf("%d, ", next);
+	for (i = 3; i <= target; i++)
+	{
+		next = first + second;
+		printf("%d", next);
+		if (i < target)
+		{
+			printf(", ");
+		}
 		first = second;
 		second = next;
-		next = first + second;
-		}
+	}
 	printf("\n");
 	return (0);
 }
