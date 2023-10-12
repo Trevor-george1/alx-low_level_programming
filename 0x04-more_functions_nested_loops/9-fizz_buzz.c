@@ -29,7 +29,7 @@ int main(void)
 		printf("%d", j);
 		}
 		j++;
-		if (j != 100)
+		if (j != 101)
 			printf(" ");
 		else
 			printf("\n");
