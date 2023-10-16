@@ -2,22 +2,15 @@
 #include <string.h>
 void main(void)
 {
-	int arr[5] = {1,  2, 3, 4, 5};
-	int *a;
-	int count = 3, i;
+	char *src = "Hello";
+	char *dest = "";
+	int i, j;
 
-	a = arr;
-
-	for (i = 0; i < count; i++)
-		if (i != count - 1)
-		{
-		printf("%d, ", *(a + i));
-		}
-		else
-		{
-		printf("%d", *(a + i));
-		}
-	printf("\n");
+	for (i = 0; src[i] != '\0'; i++)
+		dest[j] = src[i];
+		j++;
+	dest[j] = '\0';
+	printf("%s\n", dest);
 
 	
 
