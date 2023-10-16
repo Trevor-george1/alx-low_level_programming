@@ -2,15 +2,27 @@
 #include <string.h>
 void main(void)
 {
-	char *src = "Hello";
-	char *dest = "";
-	int i, j;
+	char numStr[] = "12345";
+	char *str = numStr;
+	int sign = 1; // 1 positive -1 nega
+	int final = 0, result = 0;
 
-	for (i = 0; src[i] != '\0'; i++)
-		dest[j] = src[i];
-		j++;
-	dest[j] = '\0';
-	printf("%s\n", dest);
+	while (*str == ' ')
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		sign = (*str == '-') ? -1 : 1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	final = sign * result;
+
+
+	printf("Converted Integer: %d\n", final);
 
 	
 
