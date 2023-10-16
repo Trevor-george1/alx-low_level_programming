@@ -2,21 +2,23 @@
 #include <string.h>
 void main(void)
 {
-	char *c = "0134";
-	int len, n;
+	int arr[5] = {1,  2, 3, 4, 5};
+	int *a;
+	int count = 3, i;
 
-	for (len = 0; c[len] != '\0'; len++)
-		;
-	if (len % 2 == 0)
-	{
-		for (n = len / 2; c[n] != '\0'; n++)
-			putchar(c[n]);
-	}
-	else
-	{
-		for (n = ((len - 1 ) / 2) + 1; c[n] != '\0'; n++)
-			putchar(c[n]);
-	}
+	a = arr;
+
+	for (i = 0; i < count; i++)
+		if (i != count - 1)
+		{
+		printf("%d, ", *(a + i));
+		}
+		else
+		{
+		printf("%d", *(a + i));
+		}
+	printf("\n");
+
 	
 
 
