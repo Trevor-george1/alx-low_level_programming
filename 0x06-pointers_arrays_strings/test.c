@@ -1,21 +1,18 @@
 
 #include <stdio.h>
 
-char *_strncat(char *dest, char *src, int n)
+char *_strncpy(char *dest, char *src, int n)
 {
 	int i;
-	int j;
-	
-	for (i = 0; dest[i] != '\0'; i++)
-		;
-	for (j = 0; src[j] < n; j++)
-	{
-		dest[i] = src[j];
-		i++;
 
+	for (i = 0; src[i] != '0'; i++)
+		dest[i] = src[i];
+
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
 	}
-	
-	dest = '\0';
 	return (dest);
 }
 /**
@@ -31,7 +28,7 @@ int main(void)
 
     printf("%s\n", s1);
     printf("%s", s2);
-    ptr = _strncat(s1, s2, 1);
+    ptr = _strncpy(s1, s2, 3);
     printf("%s\n", s1);
     printf("%s", s2);
     printf("%s", ptr);
