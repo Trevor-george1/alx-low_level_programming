@@ -7,7 +7,7 @@
  */
 char *leet(char *s)
 {
-	int c, i;
+	int c = 0, i;
 
 	int u[] = {65, 69, 79, 84, 76};
 	int l[] = {97, 101, 111, 116, 108};
