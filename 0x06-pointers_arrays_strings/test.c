@@ -1,36 +1,42 @@
-
+#include "main.h"
 #include <stdio.h>
 
-char *_strncpy(char *dest, char *src, int n)
+
+char *leet(char *s)
 {
-	int i;
+	int c = 0, i = 0;
 
-	for (i = 0; src[i] != '0'; i++)
-		dest[i] = src[i];
+	int u[] = {65, 69, 79, 84, 76};
+	int l[] = {97, 101, 111, 116, 108};
+	int n[] = {52, 51, 48, 55, 49};
 
-	while (i < n)
+	while (s[c] != '\0')
 	{
-		dest[i] = '\0';
-		i++;
+		for (i = 0; i < 5; i++)
+		{
+			if (s[c] == u[i] || s[c] == l[i])
+			{
+				s[c] = n[i];
+				break;
+			}
+
+		}
+		c++;
 	}
-	return (dest);
+	return (s);
 }
 /**
- * main - check the code
+ * main - check the code for
  *
  * Return: Always 0.
  */
 int main(void)
 {
-    char s1[98] = "Hello ";
-    char s2[] = "World!\n";
-    char *ptr;
+    char s[] = "Expect the best. Prepare for the worst. Capitalize on what comes.\n";
+    char *p;
 
-    printf("%s\n", s1);
-    printf("%s", s2);
-    ptr = _strncpy(s1, s2, 3);
-    printf("%s\n", s1);
-    printf("%s", s2);
-    printf("%s", ptr);
-	return (0);
+    p = leet(s);
+    printf("%s", p);
+    printf("%s", s);
+    return (0);
 }
