@@ -1,25 +1,5 @@
 #include "main.h"
 /**
- * compare - compares two strings
- * @x: string 1
- * @y: string 2
- * Return: string
- */
-int compare(char *x, char *y)
-{
-	while (*x && *y)
-	{
-		if (*x != *y)
-		{
-			return (0);
-		}
-		x++;
-		y++;
-	}
-	return (*y == '\0');
-}
-
-/**
  * _strstr - locates a substring
  * @haystack: string 1
  * @needle: string 2
@@ -27,14 +7,21 @@ int compare(char *x, char *y)
  */
 char *_strstr(char *haystack, char *needle)
 {
+	char *b, *p;
 
-	while (*haystack != '\0')
+	while (*haystack)
 	{
-		if ((*haystack == *needle) && compare(haystack, needle))
+		b = haystack;
+		p = needle;
+
+		while (*b && *p && *b == *p)
 		{
-			return (haystack);
+			haystack++;
+			needle++;
 		}
-		haystack++;
+		if (!*p)
+			return (b);
+		haystack = b + 1;
 	}
 	return (NULL);
 }
