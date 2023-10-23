@@ -14,14 +14,14 @@ char *_strstr(char *haystack, char *needle)
 		b = haystack;
 		p = needle;
 
-		while (*b && *p && *b == *p)
+		while (*p != '\0' && *haystack == *p)
 		{
 			haystack++;
-			needle++;
+			p++;
 		}
 		if (!*p)
 			return (b);
-		haystack = b + 1;
+		haystack++;
 	}
 	return (NULL);
 }
