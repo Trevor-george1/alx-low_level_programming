@@ -12,6 +12,7 @@
  *
  * Description: singly linked list node structure
  */
+
 typedef struct list_s
 {
 	char *str;
@@ -20,4 +21,5 @@ typedef struct list_s
 } list_t;
 
 size_t print_list(const list_t *h);
+size_t list_len(const list_t *h);
 #endif
