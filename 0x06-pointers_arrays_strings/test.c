@@ -1,42 +1,45 @@
 #include "main.h"
 #include <stdio.h>
 
-
-char *leet(char *s)
-{
-	int c = 0, i = 0;
-
-	int u[] = {65, 69, 79, 84, 76};
-	int l[] = {97, 101, 111, 116, 108};
-	int n[] = {52, 51, 48, 55, 49};
-
-	while (s[c] != '\0')
-	{
-		for (i = 0; i < 5; i++)
-		{
-			if (s[c] == u[i] || s[c] == l[i])
-			{
-				s[c] = n[i];
-				break;
-			}
-
-		}
-		c++;
-	}
-	return (s);
-}
 /**
- * main - check the code for
+* _strcat - function that concatenates 2 strings
+* @dest: destination
+* @src: source
+* Return: dest
+*/
+
+char *_strcat(char *dest, char *src)
+{
+	int i = 0;
+	int j = 0;
+
+	while (dest[i] != '\0')
+	{
+		i++;
+	}
+	for (j = 0; src[j] != '\0')
+	{
+		dest[i + j] = src[j];
+	}
+	return (dest);
+}
+
+/**
+ * main - check the code
  *
  * Return: Always 0.
  */
 int main(void)
 {
-    char s[] = "Expect the best. Prepare for the worst. Capitalize on what comes.\n";
-    char *p;
+    char s1[98] = "Hello ";
+    char s2[] = "World!\n";
+    char *ptr;
 
-    p = leet(s);
-    printf("%s", p);
-    printf("%s", s);
+    printf("%s\n", s1);
+    printf("%s", s2);
+    ptr = _strcat(s1, s2);
+    printf("%s", s1);
+    printf("%s", s2);
+    printf("%s", ptr);
     return (0);
 }
