@@ -16,11 +16,11 @@ int pop_listint(listint_t **head)
 	}
 	else
 	{
-	data = (*head)->n;
 
 	temp = *head;
 
 	new = temp->next;
+	data = temp->n;
 	free(temp);
 	*head = new;
 	}
